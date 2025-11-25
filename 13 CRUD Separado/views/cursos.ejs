@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cursos (EJS)</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="container">
+      <h1>Cursos</h1>
+
+      <% if (Array.isArray(cursos) && cursos.length > 0) { %>
+        <p>Se muestran <strong><%= cursos.length %></strong> curso(s).</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width:70px">ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th style="width:120px">Profesor ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cursos.forEach(function(c){ %>
+              <tr>
+                <td><%= c.id %></td>
+                <td><%= c.nombre || '' %></td>
+                <td><%= c.descripcion || '' %></td>
+                <td><%= c.profesor_id || '' %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+        <p style="margin-top:12px"><a href="/vista/cursos">Volver a bienvenida</a></p>
+
+      <% } else { %>
+        <div id="status">No hay cursos para mostrar o hubo un error al cargarlos.</div>
+        <p style="margin-top:12px"><a href="/vista/cursos">Volver a bienvenida</a></p>
+      <% } %>
+
+    </main>
+  </body>
+</html>
